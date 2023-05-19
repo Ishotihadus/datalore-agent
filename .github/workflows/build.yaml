@@ -1,0 +1,28 @@
+name: Build and push
+on:
+  push:
+    branches: [main]
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker/login-action@v2
+        with:
+          username: ishotihadus
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - uses: docker/metadata-action@v4
+        with:
+          images: ishotihadus/datalore-agent
+      - id: cache
+        uses: actions/cache@v3
+        with:
+          path: Dockerfile
+          key: ${{ hashFiles('Dockerfile') }}
+      - if: steps.cache.outputs.cache-hit != 'true'
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: Dockerfile
+          push: true
+          tags: ishotihadus/datalore-agent:latest
