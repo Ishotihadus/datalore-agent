@@ -6,10 +6,14 @@ RUN apt-get -y update && apt-get -y install \
     autoconf \
     libfontconfig-dev \
     libfreetype-dev \
+    libglu1-mesa \
+    libglu1-mesa-dev \
     libjpeg-dev \
     libltdl-dev \
     libomp-dev \
     libpng-dev \
+    libxi-dev \
+    libxmu-dev \
     libyaml-dev \
     sox \
     && \
