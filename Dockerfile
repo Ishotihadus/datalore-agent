@@ -28,11 +28,11 @@ RUN apt-get -y update && apt-get -y install \
     cd / && rm -rf /tmp/ruby-3.2.2 && \
     \
     cd /tmp && \
-    curl -L https://imagemagick.org/download/ImageMagick-7.1.1-9.tar.gz | tar xzf - && \
-    cd /tmp/ImageMagick-7.1.1-9 && \
+    curl -L https://imagemagick.org/download/ImageMagick-7.1.1-10.tar.gz | tar xzf - && \
+    cd /tmp/ImageMagick-7.1.1-10 && \
     ./configure --enable-shared --with-modules --disable-docs && \
     make install $MAKE_OPTIONS && \
-    cd / && rm -rf /tmp/ImageMagick-7.1.1-9 && \
+    cd / && rm -rf /tmp/ImageMagick-7.1.1-10 && \
     \
     ldconfig -v && \
     \
