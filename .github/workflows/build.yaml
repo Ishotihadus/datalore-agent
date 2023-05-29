@@ -14,15 +14,11 @@ jobs:
       - uses: docker/metadata-action@v4
         with:
           images: ishotihadus/datalore-agent
-      - id: cache
-        uses: actions/cache@v3
-        with:
-          path: Dockerfile
-          key: ${{ hashFiles('Dockerfile') }}
-      - if: steps.cache.outputs.cache-hit != 'true'
-        uses: docker/build-push-action@v4
+      - uses: docker/build-push-action@v4
         with:
           context: .
           file: Dockerfile
           push: true
-          tags: ishotihadus/datalore-agent:latest
+          tags: |
+            ishotihadus/datalore-agent:latest
+            ishotihadus/datalore-agent:${{ github.sha }}
